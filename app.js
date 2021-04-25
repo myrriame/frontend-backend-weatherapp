@@ -9,19 +9,19 @@ if (!address) {
 
 } else {
 
-    geocode(address, (err, data) => {
+    geocode(address, (err, { latitude, longitude, location } = {}) => {
 
         if (err) {
             return console.log(err)
         }
 
-        forecast(data.latitude, data.longitude, (error, forecastdata) => {
+        forecast(latitude, longitude, (error, forecastdata) => {
 
             if (err) {
                 return console.log(err)
             }
 
-            console.log(`${data.location}: ${forecastdata}`)
+            console.log(`${location}: ${forecastdata}`)
 
         })
     })
